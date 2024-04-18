@@ -14,9 +14,13 @@ public interface IPersonaController extends Remote {
     
     int delete(IPersona persona) throws RemoteException;
 
+    int delete(int IdPersona)throws RemoteException;
+
     List<IPersona> list() throws RemoteException;
 
     IPersona findOne(int idPersona) throws RemoteException;
+
+    List <IPersona> find(IPersona persona) throws RemoteException;
 
    
 

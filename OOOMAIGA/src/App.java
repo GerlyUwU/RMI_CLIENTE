@@ -15,25 +15,22 @@ public class App {
             IPersonaController personaController = (IPersonaController) Naming
                     .lookup("rmi://localhost/personaController");
 
-            List<IPersona> lista = personaController.list();
+            IPersona persona = personaController.newInstance();
+            persona.setId(2);
+
+            List<IPersona> lista = personaController.find(persona);
             for (IPersona personaTemp : lista) {
                 System.out.println(personaTemp.getString());
             }
 
-            IPersona persona = personaController.newInstance();
-            persona.setId(3);
-            int respuesta = personaController.delete(persona);
-            System.out.println("respuesta: "+ respuesta);
-
+           
+            
             /*
              * //agregar
              * personaController.add(persona);
              */
 
-          lista = personaController.list();
-            for (IPersona personaTemp : lista) {
-                System.out.println(personaTemp.getString());
-            }
+          
 
         } catch (NotBoundException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
